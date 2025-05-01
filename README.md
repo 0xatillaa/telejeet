@@ -8,6 +8,4 @@ A Telegram bot that scrapes public groups from TGStat and spams them
 - Spamming groups a message of your choice
 - Rate limits respected
 
-## advanced
-
-For a version that uses ChatGPT to find topic related groups and spam them automatically, and automatic captcha solving with 2captcha, contact me on Discord atilla4030 or telegram @atillaweb3
+## For a version that uses ChatGPT to find related keywords, automatically joins groups, and solves captchas with 2captcha, message me on tg @atillaweb3
