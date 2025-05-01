@@ -40,13 +40,13 @@ async function main() {
       try {
         if (scrapeGroup) {
           const resp = await client.invoke({
-            _: "searchPublicChats",
-            query: scrapeGroup,
+            _: "searchPublicChat",
+           username: scrapeGroup
           });
           await new Promise((resolve) => setTimeout(resolve, 3000));
+         
           if (resp) {
-            for (const chat_id of resp.chat_ids) {
-              const chat = await client.invoke({ _: "getChat", chat_id });
+              const chat = await client.invoke({ _: "getChat", chat_id: resp.id });
               await new Promise((resolve) => setTimeout(resolve, 3000));
 
               console.log(chat);
@@ -55,11 +55,11 @@ async function main() {
                   chat.type._ == "chatTypeBasicGroup") &&
                 chat.permissions.can_send_basic_messages
               ) {
-                await client.invoke({ _: "joinChat", chat_id });
+                await client.invoke({ _: "joinChat", chat_id: resp.id });
 
                 await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 secs
               }
-            }
+            
           }
         } else {
           console.log("cant get scaped groups");
